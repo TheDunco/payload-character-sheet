@@ -37,6 +37,15 @@ export const FifthEditionCharacter: CollectionConfig = {
     },
 
     {
+      name: 'picture',
+      type: 'relationship',
+      relationTo: 'media',
+      admin: {
+        position: 'sidebar',
+      },
+    },
+
+    {
       type: 'tabs',
       tabs: [
         {

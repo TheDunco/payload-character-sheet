@@ -9,6 +9,7 @@ export interface Config {
   collections: {
     users: User;
     'fifth-edition-character': FifthEditionCharacter;
+    media: Media;
   };
   globals: {};
 }
@@ -27,6 +28,7 @@ export interface FifthEditionCharacter {
   id: string;
   name?: string;
   users?: string | User;
+  picture?: string | Media;
   AbilityScoresAndSkills: {
     AbilityScores: {
       Intelligence?: number;
@@ -259,6 +261,43 @@ export interface FifthEditionCharacter {
     Other?: string;
     Languages?: string;
     Proficiencies?: string;
+  };
+  createdAt: string;
+  updatedAt: string;
+}
+export interface Media {
+  id: string;
+  url?: string;
+  filename?: string;
+  mimeType?: string;
+  filesize?: number;
+  width?: number;
+  height?: number;
+  sizes: {
+    thumbnail: {
+      url?: string;
+      width?: number;
+      height?: number;
+      mimeType?: string;
+      filesize?: number;
+      filename?: string;
+    };
+    card: {
+      url?: string;
+      width?: number;
+      height?: number;
+      mimeType?: string;
+      filesize?: number;
+      filename?: string;
+    };
+    tablet: {
+      url?: string;
+      width?: number;
+      height?: number;
+      mimeType?: string;
+      filesize?: number;
+      filename?: string;
+    };
   };
   createdAt: string;
   updatedAt: string;
