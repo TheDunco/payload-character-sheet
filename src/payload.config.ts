@@ -5,7 +5,10 @@ import Users from './collections/Users';
 import { FifthEditionCharacter } from './collections/5eCharacter';
 
 export default buildConfig({
-  serverURL: 'http://localhost:3002',
+  serverURL:
+    process.env.NODE_ENV === 'production'
+      ? 'https://payload-character-sheet-production.up.railway.app/'
+      : 'http://localhost:3002',
   admin: {
     user: Users.slug,
   },
