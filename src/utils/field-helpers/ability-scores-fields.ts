@@ -2,14 +2,14 @@ import { Field } from 'payload/types';
 
 export const abilityScoresFields: Field[] = [
   {
-    name: 'AbilityScores',
+    name: 'abilityScores',
     type: 'group',
     fields: [
       {
         type: 'row',
         fields: [
           {
-            name: 'Intelligence',
+            name: 'intelligence',
             type: 'number',
             defaultValue: 10,
             min: 1,
@@ -17,7 +17,7 @@ export const abilityScoresFields: Field[] = [
           },
 
           {
-            name: 'Wisdom',
+            name: 'wisdom',
             type: 'number',
             defaultValue: 10,
             min: 1,
@@ -25,7 +25,7 @@ export const abilityScoresFields: Field[] = [
           },
 
           {
-            name: 'Charisma',
+            name: 'charisma',
             type: 'number',
             defaultValue: 10,
             min: 1,
@@ -38,7 +38,7 @@ export const abilityScoresFields: Field[] = [
         type: 'row',
         fields: [
           {
-            name: 'Dexterity',
+            name: 'dexterity',
             type: 'number',
             defaultValue: 10,
             min: 1,
@@ -46,7 +46,7 @@ export const abilityScoresFields: Field[] = [
           },
 
           {
-            name: 'Strength',
+            name: 'strength',
             type: 'number',
             defaultValue: 10,
             min: 1,
@@ -54,7 +54,7 @@ export const abilityScoresFields: Field[] = [
           },
 
           {
-            name: 'Constitution',
+            name: 'constitution',
             type: 'number',
             defaultValue: 10,
             min: 1,

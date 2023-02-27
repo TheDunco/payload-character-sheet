@@ -27,103 +27,17 @@ export interface User {
 export interface FifthEditionCharacter {
   id: string;
   name?: string;
-  users?: string | User;
-  picture?: string | Media;
-  AbilityScoresAndSkills: {
-    AbilityScores: {
-      Intelligence?: number;
-      Wisdom?: number;
-      Charisma?: number;
-      Dexterity?: number;
-      Strength?: number;
-      Constitution?: number;
-    };
-    IntelligenceSkills: {
-      Arcana: {
-        Proficient?: boolean;
-        Bonus?: number;
-      };
-      History: {
-        Proficient?: boolean;
-        Bonus?: number;
-      };
-      Investigation: {
-        Proficient?: boolean;
-        Bonus?: number;
-      };
-      Nature: {
-        Proficient?: boolean;
-        Bonus?: number;
-      };
-      Religion: {
-        Proficient?: boolean;
-        Bonus?: number;
-      };
-    };
-    WisdomSkills: {
-      AnimalHandling: {
-        Proficient?: boolean;
-        Bonus?: number;
-      };
-      Insight: {
-        Proficient?: boolean;
-        Bonus?: number;
-      };
-      Medicine: {
-        Proficient?: boolean;
-        Bonus?: number;
-      };
-      Perception: {
-        Proficient?: boolean;
-        Bonus?: number;
-      };
-      Survival: {
-        Proficient?: boolean;
-        Bonus?: number;
-      };
-    };
-    CharismaSkills: {
-      Deception: {
-        Proficient?: boolean;
-        Bonus?: number;
-      };
-      Intimidation: {
-        Proficient?: boolean;
-        Bonus?: number;
-      };
-      Performance: {
-        Proficient?: boolean;
-        Bonus?: number;
-      };
-      Persuasion: {
-        Proficient?: boolean;
-        Bonus?: number;
-      };
-    };
-    DexteritySkills: {
-      Acrobatics: {
-        Proficient?: boolean;
-        Bonus?: number;
-      };
-      SleightOfHand: {
-        Proficient?: boolean;
-        Bonus?: number;
-      };
-      Stealth: {
-        Proficient?: boolean;
-        Bonus?: number;
-      };
-    };
-  };
-  Character: {
-    OverallLevel: number;
-    XP?: number;
-    ProficiencyBonus?: number;
-    ArmorClass?: number;
-    Speed?: number;
-    Inspiration?: boolean;
-    Classes: {
-      Class?:
+  users?: string[] | User[];
+  pictures?: string[] | Media[];
+  character: {
+    overallLevel: number;
+    xp?: number;
+    proficiencyBonus?: number;
+    armorClass?: number;
+    speed?: number;
+    inspiration?: boolean;
+    classes: {
+      class?:
         | 'artificer'
         | 'barbarian'
         | 'bard'
@@ -139,10 +53,10 @@ export interface FifthEditionCharacter {
         | 'warlock'
         | 'wizard'
         | 'custom';
-      Levels?: number;
+      levels?: number;
       id?: string;
     }[];
-    Alignment?:
+    alignment?:
       | 'lawful-good'
       | 'neutral-good'
       | 'chaotic-good'
@@ -152,7 +66,7 @@ export interface FifthEditionCharacter {
       | 'lawful-evil'
       | 'neutral-evil'
       | 'chaotic-evil';
-    Background?:
+    background?:
       | 'acolyte'
       | 'anthropologist'
       | 'archaeologist'
@@ -250,17 +164,164 @@ export interface FifthEditionCharacter {
       | 'volstrucker-agent'
       | 'astral-drifter'
       | 'wildspacer';
-    Age?: number;
-    Height?: string;
-    Weight?: string;
+    age?: number;
+    height?: string;
+    weight?: string;
     size?: 'tiny' | 'small' | 'medium' | 'large' | 'huge' | 'gargantuan';
-    Eyes?: string;
-    Hair?: string;
+    eyes?: string;
+    hair?: string;
     skin?: string;
-    Clothes?: string;
-    Other?: string;
-    Languages?: string;
-    Proficiencies?: string;
+    clothes?: string;
+    other?: {
+      [k: string]: unknown;
+    }[];
+    languages?: string;
+    proficiencies?: string;
+  };
+  AbilityScoresAndSkills: {
+    abilityScores: {
+      intelligence?: number;
+      wisdom?: number;
+      charisma?: number;
+      dexterity?: number;
+      strength?: number;
+      constitution?: number;
+    };
+    intelligenceSkills: {
+      arcana: {
+        proficient?: boolean;
+        bonus?: number;
+      };
+      history: {
+        proficient?: boolean;
+        bonus?: number;
+      };
+      investigation: {
+        proficient?: boolean;
+        bonus?: number;
+      };
+      nature: {
+        proficient?: boolean;
+        bonus?: number;
+      };
+      religion: {
+        proficient?: boolean;
+        bonus?: number;
+      };
+    };
+    wisdomSkills: {
+      animalHandling: {
+        proficient?: boolean;
+        bonus?: number;
+      };
+      insight: {
+        proficient?: boolean;
+        bonus?: number;
+      };
+      medicine: {
+        proficient?: boolean;
+        bonus?: number;
+      };
+      perception: {
+        proficient?: boolean;
+        bonus?: number;
+      };
+      survival: {
+        proficient?: boolean;
+        bonus?: number;
+      };
+    };
+    charismaSkills: {
+      deception: {
+        proficient?: boolean;
+        bonus?: number;
+      };
+      intimidation: {
+        proficient?: boolean;
+        bonus?: number;
+      };
+      performance: {
+        proficient?: boolean;
+        bonus?: number;
+      };
+      persuasion: {
+        proficient?: boolean;
+        bonus?: number;
+      };
+    };
+    dexteritySkills: {
+      acrobatics: {
+        proficient?: boolean;
+        bonus?: number;
+      };
+      sleightOfHand: {
+        proficient?: boolean;
+        bonus?: number;
+      };
+      stealth: {
+        proficient?: boolean;
+        bonus?: number;
+      };
+    };
+  };
+  combat: {
+    health: {
+      currentHitPoints?: number;
+      maxHitPoints?: number;
+      temporaryHitPoints?: number;
+      hitDice: {
+        dieType?: 'd4' | 'd6' | 'd8' | 'd10' | 'd12' | 'd20';
+        currentHitDice?: number;
+      };
+      deathSaves: {
+        deathSavesSuccesses?: number;
+        deathSavesFailures?: number;
+      };
+    };
+    proficiency: {
+      castingAbility?: 'intelligence' | 'wisdom' | 'charisma' | 'strength' | 'dexterity' | 'constitution';
+      proficiencyBonus?: number;
+      attackBonus?: number;
+      saveDC?: number;
+      id?: string;
+    }[];
+    spellSlots: {
+      spellSlotLevel?: 'cantrip' | '1st' | '2nd' | '3rd' | '4th' | '5th' | '6th' | '7th' | '8th' | '9th';
+      currentSpellSlots?: number;
+      maxSpellSlots?: number;
+      id?: string;
+    }[];
+    spells: {
+      name?: string;
+      school?:
+        | 'abjuration'
+        | 'conjuration'
+        | 'divination'
+        | 'enchantment'
+        | 'evocation'
+        | 'illusion'
+        | 'necromancy'
+        | 'transmutation'
+        | 'dunamancy'
+        | 'other';
+      description?: {
+        [k: string]: unknown;
+      }[];
+      castingTime?: string;
+      range?: string;
+      components?: string;
+      duration?: string;
+      level?: number;
+      id?: string;
+    }[];
+    defenses: {
+      defenseType?: 'heavy-armor' | 'medium-armor' | 'light-armor' | 'natural-armor' | 'shield' | 'misc';
+      base?: number;
+      bonus?: number;
+      magical?: boolean;
+      magicalBonus?: number;
+      id?: string;
+    }[];
   };
   createdAt: string;
   updatedAt: string;

@@ -7,17 +7,17 @@ const skill = (name: string, label?: string): Field[] => [
     fields: [
       {
         type: 'group',
-        name,
+        name: name.slice(0, 1).toLowerCase() + name.slice(1),
         fields: [
           {
-            name: 'Proficient',
+            name: 'proficient',
             type: 'checkbox',
             admin: {
               width: '10%',
             },
           },
           {
-            name: 'Bonus',
+            name: 'bonus',
             type: 'number',
             defaultValue: 0,
             admin: {
@@ -34,7 +34,7 @@ const skill = (name: string, label?: string): Field[] => [
 export const skillsFields: Field[] = [
   {
     type: 'group',
-    name: 'IntelligenceSkills',
+    name: 'intelligenceSkills',
     fields: [
       ...skill('Arcana'),
       ...skill('History'),
@@ -46,7 +46,7 @@ export const skillsFields: Field[] = [
 
   {
     type: 'group',
-    name: 'WisdomSkills',
+    name: 'wisdomSkills',
     fields: [
       ...skill('AnimalHandling', 'Animal Handling'),
       ...skill('Insight'),
@@ -58,7 +58,7 @@ export const skillsFields: Field[] = [
 
   {
     type: 'group',
-    name: 'CharismaSkills',
+    name: 'charismaSkills',
     fields: [
       ...skill('Deception'),
       ...skill('Intimidation'),
@@ -69,7 +69,7 @@ export const skillsFields: Field[] = [
 
   {
     type: 'group',
-    name: 'DexteritySkills',
+    name: 'dexteritySkills',
     fields: [
       ...skill('Acrobatics'),
       ...skill('SleightOfHand', 'Sleight of Hand'),
