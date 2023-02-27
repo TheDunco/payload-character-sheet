@@ -41,11 +41,15 @@ export const Campaigns: CollectionConfig = {
       hasMany: true,
     },
 
+    //TODO: Use backpop plugin to backpopulate this field
     {
       type: 'relationship',
       name: 'notes',
       relationTo: 'notes',
       hasMany: true,
+      admin: {
+        readOnly: true,
+      },
     },
   ],
 };
