@@ -4,6 +4,8 @@ import path from 'path';
 import Users from './collections/Users';
 import { FifthEditionCharacter } from './collections/5eCharacter';
 import { Media } from './collections/Upload';
+import { Notes } from './collections/Notes';
+import { Campaigns } from './collections/Campaign';
 
 export default buildConfig({
   serverURL:
@@ -13,7 +15,7 @@ export default buildConfig({
   admin: {
     user: Users.slug,
   },
-  collections: [Users, FifthEditionCharacter, Media],
+  collections: [Users, FifthEditionCharacter, Notes, Campaigns, Media],
   typescript: {
     outputFile: path.resolve(__dirname, 'payload-types.ts'),
   },

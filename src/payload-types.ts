@@ -9,6 +9,8 @@ export interface Config {
   collections: {
     users: User;
     'fifth-edition-character': FifthEditionCharacter;
+    notes: Note;
+    campaigns: Campaign;
     media: Media;
   };
   globals: {};
@@ -26,7 +28,7 @@ export interface User {
 }
 export interface FifthEditionCharacter {
   id: string;
-  name?: string;
+  name: string;
   users?: string[] | User[];
   pictures?: string[] | Media[];
   character: {
@@ -323,6 +325,7 @@ export interface FifthEditionCharacter {
       id?: string;
     }[];
   };
+  notes?: string[] | Note[];
   createdAt: string;
   updatedAt: string;
 }
@@ -360,6 +363,29 @@ export interface Media {
       filename?: string;
     };
   };
+  createdAt: string;
+  updatedAt: string;
+}
+export interface Note {
+  id: string;
+  name: string;
+  note?: {
+    [k: string]: unknown;
+  }[];
+  media?: string[] | Media[];
+  campaign?: string | Campaign;
+  character?: string[] | FifthEditionCharacter[];
+  creator?: string | User;
+  createdAt: string;
+  updatedAt: string;
+}
+export interface Campaign {
+  id: string;
+  name: string;
+  players?: string[] | User[];
+  characters?: string[] | FifthEditionCharacter[];
+  media?: string[] | Media[];
+  notes?: string[] | Note[];
   createdAt: string;
   updatedAt: string;
 }

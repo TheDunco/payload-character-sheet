@@ -12,6 +12,8 @@ export const combatTab: Tab = {
     ...healthFields,
     ...proficiencyFields,
     ...spellsFields,
+    //TODO: add combat actions
+    //TODO: add feats
     ...defensesFields,
   ],
 };

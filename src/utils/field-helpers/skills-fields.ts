@@ -31,6 +31,7 @@ const skill = (name: string, label?: string): Field[] => [
   },
 ];
 
+//TODO: Make these collapsibles
 export const skillsFields: Field[] = [
   {
     type: 'group',

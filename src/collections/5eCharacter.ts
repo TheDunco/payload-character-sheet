@@ -1,13 +1,8 @@
 import { CollectionConfig } from 'payload/types';
-import { abilityScoresFields } from '../utils/field-helpers/ability-scores-fields';
-import { alignmentOptions } from '../utils/options-helpers/alignment-options';
-import { classOptions } from '../utils/options-helpers/class-options';
-import { skillsFields } from '../utils/field-helpers/skills-fields';
-import { backgroundOptions } from '../utils/options-helpers/background-options';
-import { option } from '../utils/options-helpers/option';
 import { abilityScoresAndSkillsTab } from '../utils/tabs/ability-scores-and-skills-tab';
 import { characterTab } from '../utils/tabs/character-tab';
 import { combatTab } from '../utils/tabs/combat-tab';
+import { notesTab } from '../utils/tabs/notes-tab';
 
 // Example Collection - For reference only, this must be added to payload.config.ts to be used.
 export const FifthEditionCharacter: CollectionConfig = {
@@ -26,6 +21,7 @@ export const FifthEditionCharacter: CollectionConfig = {
     {
       name: 'name',
       type: 'text',
+      required: true,
     },
 
     {
@@ -52,7 +48,9 @@ export const FifthEditionCharacter: CollectionConfig = {
 
     {
       type: 'tabs',
-      tabs: [characterTab, abilityScoresAndSkillsTab, combatTab],
+      //TODO: Add equipment tab
+      //TODO: Add notes tab
+      tabs: [characterTab, abilityScoresAndSkillsTab, combatTab, notesTab],
     },
   ],
 };
