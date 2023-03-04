@@ -7,29 +7,18 @@
 
 export interface Config {
   collections: {
-    users: User;
     'fifth-edition-character': FifthEditionCharacter;
-    notes: Note;
+    'kids-on-brooms-character': KidsOnBroomsCharacter;
     campaigns: Campaign;
+    notes: Note;
     media: Media;
+    users: User;
   };
   globals: {};
-}
-export interface User {
-  id: string;
-  email?: string;
-  resetPasswordToken?: string;
-  resetPasswordExpiration?: string;
-  loginAttempts?: number;
-  lockUntil?: string;
-  createdAt: string;
-  updatedAt: string;
-  password?: string;
 }
 export interface FifthEditionCharacter {
   id: string;
   name: string;
-  users?: string[] | User[];
   pictures?: string[] | Media[];
   character: {
     overallLevel: number;
@@ -174,9 +163,7 @@ export interface FifthEditionCharacter {
     hair?: string;
     skin?: string;
     clothes?: string;
-    other?: {
-      [k: string]: unknown;
-    }[];
+    other?: string;
     languages?: string;
     proficiencies?: string;
   };
@@ -386,6 +373,93 @@ export interface Campaign {
   characters?: string[] | FifthEditionCharacter[];
   media?: string[] | Media[];
   notes?: string[] | Note[];
+  createdAt: string;
+  updatedAt: string;
+}
+export interface User {
+  id: string;
+  firstName: string;
+  lastName: string;
+  roles?: ('admin' | 'player' | 'dm')[];
+  email?: string;
+  resetPasswordToken?: string;
+  resetPasswordExpiration?: string;
+  loginAttempts?: number;
+  lockUntil?: string;
+  createdAt: string;
+  updatedAt: string;
+  password?: string;
+}
+export interface KidsOnBroomsCharacter {
+  id: string;
+  name: string;
+  pictures?: string[] | Media[];
+  adversityTokens?: number;
+  stats: {
+    stats: {
+      fight: {
+        fightDiceType: 'd4' | 'd6' | 'd8' | 'd10' | 'd12' | 'd20';
+        fightStat?: number;
+        fightMagicDie?: 'd4' | 'd6' | 'd8' | 'd10' | 'd12' | 'd20';
+        fightCommonSenseDie?: 'd4' | 'd6' | 'd8' | 'd10' | 'd12' | 'd20';
+      };
+      flight: {
+        flightDiceType: 'd4' | 'd6' | 'd8' | 'd10' | 'd12' | 'd20';
+        flightStat?: number;
+        flightMagicDie?: 'd4' | 'd6' | 'd8' | 'd10' | 'd12' | 'd20';
+        flightCommonSenseDie?: 'd4' | 'd6' | 'd8' | 'd10' | 'd12' | 'd20';
+      };
+      brains: {
+        brainsDiceType: 'd4' | 'd6' | 'd8' | 'd10' | 'd12' | 'd20';
+        brainsStat?: number;
+        brainsMagicDie?: 'd4' | 'd6' | 'd8' | 'd10' | 'd12' | 'd20';
+        brainsCommonSenseDie?: 'd4' | 'd6' | 'd8' | 'd10' | 'd12' | 'd20';
+      };
+      brawn: {
+        brawnDiceType: 'd4' | 'd6' | 'd8' | 'd10' | 'd12' | 'd20';
+        brawnStat?: number;
+        brawnMagicDie?: 'd4' | 'd6' | 'd8' | 'd10' | 'd12' | 'd20';
+        brawnCommonSenseDie?: 'd4' | 'd6' | 'd8' | 'd10' | 'd12' | 'd20';
+      };
+      charm: {
+        charmDiceType: 'd4' | 'd6' | 'd8' | 'd10' | 'd12' | 'd20';
+        charmStat?: number;
+        charmMagicDie?: 'd4' | 'd6' | 'd8' | 'd10' | 'd12' | 'd20';
+        charmCommonSenseDie?: 'd4' | 'd6' | 'd8' | 'd10' | 'd12' | 'd20';
+      };
+      grit: {
+        gritDiceType: 'd4' | 'd6' | 'd8' | 'd10' | 'd12' | 'd20';
+        gritStat?: number;
+        gritMagicDie?: 'd4' | 'd6' | 'd8' | 'd10' | 'd12' | 'd20';
+        gritCommonSenseDie?: 'd4' | 'd6' | 'd8' | 'd10' | 'd12' | 'd20';
+      };
+    };
+  };
+  character: {
+    name?: string;
+    age?: number;
+    pronounts?: string;
+    fear?: string;
+    motivation?: string;
+    description?: string;
+    grade?: string;
+    broomName?: string;
+    broomLook?: string;
+    mechanicalBenefit?: string;
+    wandWood?: string;
+    wandCore?: string;
+    wandLength?: string;
+    wandFlexibility?: string;
+    wandAppearance?: string;
+    animalFamiliar?: string;
+  };
+  schoolBag: {
+    items: {
+      item?: string;
+      quantity?: number;
+      id?: string;
+    }[];
+  };
   createdAt: string;
   updatedAt: string;
 }
