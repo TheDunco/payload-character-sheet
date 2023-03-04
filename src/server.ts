@@ -7,26 +7,26 @@ const app = express();
 
 // Redirect root to Admin panel
 app.get('/', (_, res) => {
-  res.redirect('/admin');
+    res.redirect('/admin');
 });
 
 // serve up content in the /assets folder
 app.use('/assets', express.static(path.resolve(__dirname, '../assets')));
 
 const start = async () => {
-  // Initialize Payload
-  await payload.init({
-    secret: process.env.PAYLOAD_SECRET,
-    mongoURL: process.env.MONGODB_URI,
-    express: app,
-    onInit: async () => {
-      payload.logger.info(`Payload Admin URL: ${payload.getAdminURL()}`);
-    },
-  });
+    // Initialize Payload
+    await payload.init({
+        secret: process.env.PAYLOAD_SECRET,
+        mongoURL: process.env.MONGO_URL,
+        express: app,
+        onInit: async () => {
+            payload.logger.info(`Payload Admin URL: ${payload.getAdminURL()}`);
+        },
+    });
 
-  // Add your own express routes here
+    // Add your own express routes here
 
-  app.listen(3002);
+    app.listen(3002);
 };
 
 start();
