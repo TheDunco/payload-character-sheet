@@ -32,10 +32,10 @@ export default buildConfig({
     },
     collections: [FifthEditionCharacter, KidsOnBroomsCharacter, Campaigns, Notes, Media, Users],
     typescript: {
-        outputFile: path.resolve(__dirname, '/generated/payload-types.ts'),
+        outputFile: path.resolve(__dirname, 'src/payload-types.ts'),
     },
     graphQL: {
-        schemaOutputFile: path.resolve(__dirname, '/generated/schema.graphql'),
+        schemaOutputFile: path.resolve(__dirname, 'src/generated-schema.graphql'),
         disablePlaygroundInProduction: false,
     },
 });

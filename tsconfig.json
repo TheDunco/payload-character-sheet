@@ -26,6 +26,8 @@
     "node_modules",
     "dist",
     "build",
+    "src/hooks",
+    "src/plugins",
   ],
   "ts-node": {
     "transpileOnly": true,
