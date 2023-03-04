@@ -1,9 +1,9 @@
-import { CollectionConfig } from "payload/types";
-import { isAdmin, isAdminFieldLevel } from "../access/isAdmin";
-import { isAdminOrSelf } from "../access/isAdminOrSelf";
+import { CollectionConfig } from 'payload/types';
+import { isAdmin, isAdminFieldLevel } from '../access/isAdmin';
+import { isAdminOrSelf } from '../access/isAdminOrSelf';
 
 const Users: CollectionConfig = {
-    slug: "users",
+    slug: 'users',
     auth: {
         // This property controls how deeply "populated"
         // relationship docs are that are stored in the req.user.
@@ -12,7 +12,7 @@ const Users: CollectionConfig = {
         depth: 0,
     },
     admin: {
-        useAsTitle: "email",
+        useAsTitle: 'email',
     },
     access: {
         // Only admins can create users
@@ -26,27 +26,27 @@ const Users: CollectionConfig = {
     },
     fields: [
         {
-            type: "row",
+            type: 'row',
             fields: [
                 {
-                    name: "firstName",
-                    type: "text",
+                    name: 'firstName',
+                    type: 'text',
                     required: true,
                 },
                 {
-                    name: "lastName",
-                    type: "text",
+                    name: 'lastName',
+                    type: 'text',
                     required: true,
                 },
             ],
         },
         {
-            name: "roles",
+            name: 'roles',
             // Save this field to JWT so we can use from `req.user`
             saveToJWT: true,
-            type: "select",
+            type: 'select',
             hasMany: true,
-            defaultValue: ["player"],
+            defaultValue: ['player'],
             access: {
                 // Only admins can create or update a value for this field
                 create: isAdminFieldLevel,
@@ -54,16 +54,16 @@ const Users: CollectionConfig = {
             },
             options: [
                 {
-                    label: "Admin",
-                    value: "admin",
+                    label: 'Admin',
+                    value: 'admin',
                 },
                 {
-                    label: "Player",
-                    value: "player",
+                    label: 'Player',
+                    value: 'player',
                 },
                 {
-                    label: "DM",
-                    value: "dm",
+                    label: 'DM',
+                    value: 'dm',
                 },
             ],
         },

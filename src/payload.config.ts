@@ -8,6 +8,7 @@ import { Campaigns } from './collections/Campaign';
 import { Logo } from './components/Logo';
 import { Dashboard } from './components/Dashboard';
 import { KidsOnBroomsCharacter } from './collections/KidsOnBroomsCharacter';
+import { SignUp } from './components/SignUp';
 
 export default buildConfig({
     serverURL:
@@ -29,6 +30,7 @@ export default buildConfig({
                 Logo: Logo,
                 Icon: Logo,
             },
+            beforeLogin: [SignUp],
         },
     },
     collections: [FifthEditionCharacter, KidsOnBroomsCharacter, Campaigns, Notes, Media, Users],
