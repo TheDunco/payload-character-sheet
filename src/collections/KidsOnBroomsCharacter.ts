@@ -1,21 +1,20 @@
 import { CollectionConfig } from 'payload/types';
 import { isAdminOrSelf } from '../access/isAdminOrSelf';
-import { abilityScoresAndSkillsTab } from '../utils/field-helpers/5e/tabs/ability-scores-and-skills-tab';
-import { characterTab } from '../utils/field-helpers/5e/tabs/character-tab';
-import { combatTab } from '../utils/field-helpers/5e/tabs/combat-tab';
-import { notesTab } from '../utils/field-helpers/5e/tabs/notes-tab';
+import { characterTab } from '../utils/field-helpers/kob/tabs/character-tab';
+import { schoolBagTab } from '../utils/field-helpers/kob/tabs/school-bag-tab';
+import { statsTab } from '../utils/field-helpers/kob/tabs/stats-tab';
 
 // Example Collection - For reference only, this must be added to payload.config.ts to be used.
-export const FifthEditionCharacter: CollectionConfig = {
-    slug: 'fifth-edition-character',
+export const KidsOnBroomsCharacter: CollectionConfig = {
+    slug: 'kids-on-brooms-character',
     labels: {
-        singular: '5e Character',
-        plural: '5e Characters',
+        singular: 'Kids on Brooms Character',
+        plural: 'Kids on Brooms Characters',
     },
 
     admin: {
         useAsTitle: 'name',
-        defaultColumns: ['name', 'level', 'users'],
+        defaultColumns: ['name', 'level'],
     },
 
     access: {
@@ -44,9 +43,17 @@ export const FifthEditionCharacter: CollectionConfig = {
         },
 
         {
+            type: 'number',
+            name: 'adversityTokens',
+            defaultValue: 3,
+            admin: {
+                width: '50%',
+            },
+        },
+
+        {
             type: 'tabs',
-            //TODO: Add equipment tab
-            tabs: [characterTab, abilityScoresAndSkillsTab, combatTab, notesTab],
+            tabs: [statsTab, characterTab, schoolBagTab],
         },
     ],
 };
