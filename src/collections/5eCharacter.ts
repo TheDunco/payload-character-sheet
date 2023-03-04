@@ -3,6 +3,7 @@ import { isAdminOrSelf } from '../access/isAdminOrSelf';
 import { abilityScoresAndSkillsTab } from '../utils/field-helpers/5e/tabs/ability-scores-and-skills-tab';
 import { characterTab } from '../utils/field-helpers/5e/tabs/character-tab';
 import { combatTab } from '../utils/field-helpers/5e/tabs/combat-tab';
+import { equipmentTab } from '../utils/field-helpers/5e/tabs/equipment-tab';
 import { notesTab } from '../utils/field-helpers/5e/tabs/notes-tab';
 
 // Example Collection - For reference only, this must be added to payload.config.ts to be used.
@@ -45,8 +46,7 @@ export const FifthEditionCharacter: CollectionConfig = {
 
         {
             type: 'tabs',
-            //TODO: Add equipment tab
-            tabs: [characterTab, abilityScoresAndSkillsTab, combatTab, notesTab],
+            tabs: [characterTab, abilityScoresAndSkillsTab, combatTab, equipmentTab, notesTab],
         },
     ],
 };

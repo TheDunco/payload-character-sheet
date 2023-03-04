@@ -11,7 +11,10 @@ app.get('/', (_, res) => {
 });
 
 // serve up content in the /assets folder
-app.use('/assets', express.static(path.resolve(__dirname, '../assets')));
+app.use('/assets', express.static(path.resolve(__dirname, './assets')));
+
+// serve up content in the /media folder
+app.use('/media', express.static(path.resolve(__dirname, './media')));
 
 const start = async () => {
     // Initialize Payload

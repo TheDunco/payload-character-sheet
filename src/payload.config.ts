@@ -17,8 +17,9 @@ export default buildConfig({
     admin: {
         user: Users.slug,
         meta: {
-            favicon: '/favicon.ico',
-            titleSuffix: '| Book of Names',
+            favicon: '/assets/favicon.ico',
+            titleSuffix: '| Book of Names Admin',
+            ogImage: '/assets/logo.svg',
         },
         components: {
             views: {

@@ -438,7 +438,7 @@ export interface KidsOnBroomsCharacter {
   character: {
     name?: string;
     age?: number;
-    pronounts?: string;
+    pronouns?: string;
     fear?: string;
     motivation?: string;
     description?: string;

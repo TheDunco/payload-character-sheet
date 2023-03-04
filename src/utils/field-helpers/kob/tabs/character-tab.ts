@@ -9,18 +9,13 @@ export const characterTab: Tab = {
             label: 'Description',
             fields: [
                 {
-                    type: 'text',
-                    name: 'name',
-                },
-
-                {
                     type: 'number',
                     name: 'age',
                 },
 
                 {
                     type: 'text',
-                    name: 'pronounts',
+                    name: 'pronouns',
                 },
 
                 {
