@@ -21,6 +21,10 @@ In no particular order...
 - [ ] Develop KoB frontend
 - [ ] Make and expose API methods for common operations such as taking damage/healing, leveling up, etc. that do the required calculatinos for you.
 - [ ] Figure out how to get this up and running on Railway (not sure why it's not working but I keep getting a 503 error).
+- [ ] Add initiative/turn order to campaigns
+- [ ] Add status effects/active effects
+- [ ] (5e) Add system for keeping track of things you have advantage/disadvantage on
+- [ ] (5e) Add personality traits, ideals, bonds, flaws to character description
 
 ## How to Use
 
