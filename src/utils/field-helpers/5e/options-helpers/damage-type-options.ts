@@ -1,5 +1,5 @@
 import { Option } from 'payload/dist/fields/config/types';
-import { option } from '../../option';
+import { option } from '../../../option';
 
 export const damageTypeOptions: Option[] = [
     option('Acid'),

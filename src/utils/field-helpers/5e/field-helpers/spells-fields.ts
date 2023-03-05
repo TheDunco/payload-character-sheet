@@ -1,5 +1,5 @@
 import { Field } from 'payload/types';
-import { option } from '../../option';
+import { option } from '../../../option';
 
 export const spellsFields: Field[] = [
     {

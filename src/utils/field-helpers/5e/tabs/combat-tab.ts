@@ -1,10 +1,10 @@
 import { Tab } from 'payload/dist/fields/config/types';
-import { actionsFields } from '../actions-fields';
-import { defensesFields } from '../defenses-fields';
-import { featFields } from '../feat-fields';
-import { healthFields } from '../health-fields';
-import { proficiencyFields } from '../proficiency-fields';
-import { spellsFields } from '../spells-fields';
+import { actionsFields } from '../field-helpers/actions-fields';
+import { defensesFields } from '../field-helpers/defenses-fields';
+import { featFields } from '../field-helpers/feat-fields';
+import { healthFields } from '../field-helpers/health-fields';
+import { proficiencyFields } from '../field-helpers/proficiency-fields';
+import { spellsFields } from '../field-helpers/spells-fields';
 
 export const combatTab: Tab = {
     name: 'combat',

@@ -1,8 +1,8 @@
 import { Field } from 'payload/types';
-import { option } from '../../option';
-import { abilityScoreOptions } from './ability-score-options';
-import { diceOptions } from '../diceTypes';
-import { damageTypeOptions } from './damage-type-options';
+import { option } from '../../../option';
+import { abilityScoreOptions } from '../options-helpers/ability-score-options';
+import { diceOptions } from '../../diceTypes';
+import { damageTypeOptions } from '../options-helpers/damage-type-options';
 
 export const actionsFields: Field[] = [
     {

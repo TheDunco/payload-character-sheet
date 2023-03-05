@@ -14,7 +14,7 @@ export const KidsOnBroomsCharacter: CollectionConfig = {
 
     admin: {
         useAsTitle: 'name',
-        defaultColumns: ['name', 'level'],
+        defaultColumns: ['name'],
     },
 
     access: {
