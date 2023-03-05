@@ -1,7 +1,5 @@
 import { Field, Tab } from 'payload/dist/fields/config/types';
-import { option } from '../../../option';
-
-const diceOptions = [option('d4'), option('d6'), option('d8'), option('d10'), option('d12'), option('d20')];
+import { diceOptions } from '../../diceTypes';
 
 const getStatsFields = (name: string): Field[] => [
     {

@@ -5,6 +5,11 @@ export const characterTab: Tab = {
     label: 'Character',
     fields: [
         {
+            type: 'text',
+            name: 'Trope',
+        },
+
+        {
             type: 'collapsible',
             label: 'Description',
             fields: [

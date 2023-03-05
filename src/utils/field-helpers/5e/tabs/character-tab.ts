@@ -18,9 +18,6 @@ export const characterTab: Tab = {
                     type: 'number',
                     required: true,
                     defaultValue: 1,
-                    admin: {
-                        readOnly: true,
-                    },
                 },
 
                 {
@@ -34,9 +31,6 @@ export const characterTab: Tab = {
                     type: 'number',
                     name: 'proficiencyBonus',
                     label: 'Proficiency Bonus',
-                    admin: {
-                        readOnly: true,
-                    },
                 },
 
                 //TODO: Calculate AC as part of defenses

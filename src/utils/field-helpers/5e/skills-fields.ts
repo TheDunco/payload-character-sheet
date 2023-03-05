@@ -18,7 +18,6 @@ const skill = (name: string, label?: string): Field[] => [
                         type: 'number',
                         defaultValue: 0,
                         admin: {
-                            readOnly: true,
                             width: '30%',
                         },
                     },
