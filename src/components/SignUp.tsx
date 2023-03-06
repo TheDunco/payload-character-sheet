@@ -1,5 +1,7 @@
+import { json } from 'express';
 import React from 'react';
-import payload from 'payload';
+import { SignUpQuery } from '../utils/graphql/queries/sign-up';
+import { GraphQLBody } from '../utils/graphql/types/graphql-body';
 
 export const SignUp: React.FC = () => {
     const [email, setEmail] = React.useState('');
@@ -9,18 +11,31 @@ export const SignUp: React.FC = () => {
     const [lastName, setLastName] = React.useState('');
     const [showSignup, setShowSignup] = React.useState(false);
 
-    const signUp = () => {
+    const signUp = async () => {
         if (password === confirmPassword) {
             console.log('Passwords match');
-            payload.create({
-                collection: 'users',
-                data: {
+            const query: GraphQLBody = {
+                query: SignUpQuery,
+                variables: {
                     email,
                     password,
                     firstName,
                     lastName,
                 },
+            };
+
+            //TODO: Make helper function for this
+            const resp = await fetch(`http://localhost:3002/api/graphql`, {
+                method: 'POST',
+                headers: {
+                    //TODO: Allow bearer with auth token to make API calls for all instances. Add to standard isAdminOrSelf auth
+                    // Authorization: `Bearer ${CMS_API_KEY}`,
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(query),
             });
+
+            console.log(`%c[SignUp.tsx] resp :>> ${JSON.stringify(resp, null, 2)}`, 'color:green');
         }
     };
 
@@ -40,9 +55,8 @@ export const SignUp: React.FC = () => {
                 <div>
                     <h2 style={{ marginTop: '50px' }}>Sign Up</h2>
                     <form
-                        onSubmit={(e) => {
-                            e.preventDefault();
-                            signUp();
+                        onSubmit={async (e) => {
+                            await signUp();
                         }}
                     >
                         <div className="field-type password">
