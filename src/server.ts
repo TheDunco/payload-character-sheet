@@ -24,12 +24,14 @@ const start = async () => {
         express: app,
         onInit: async () => {
             payload.logger.info(`Payload Admin URL: ${payload.getAdminURL()}`);
+            payload.logger.info(`Server URL: ${process.env.SERVER_URL}`);
+            payload.logger.info(`Port: ${process.env.PORT}`);
         },
     });
 
     // Add your own express routes here
 
-    app.listen(3002);
+    app.listen(process.env.PORT || 3002);
 };
 
 start();
