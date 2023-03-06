@@ -12,7 +12,11 @@ import { SignUp } from './components/SignUp';
 import { SignInHeader } from './components/SignInHeader';
 
 export default buildConfig({
-    serverURL: process.env.BASE_URL || 'http://localhost:3002',
+    // serverURL: process.env.BASE_URL || 'http://localhost:3002',
+    serverURL:
+        process.env.NODE_ENV === 'production'
+            ? 'https://payload-character-sheet-production.up.railway.app'
+            : 'http://localhost:3002',
     admin: {
         user: Users.slug,
         meta: {
