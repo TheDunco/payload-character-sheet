@@ -44,6 +44,7 @@ export default buildConfig({
         schemaOutputFile: path.resolve(__dirname, 'generated-schema.graphql'),
         disablePlaygroundInProduction: false,
     },
+    cors: ['http://localhost:3000', 'https://payload-character-sheet-production.up.railway.app'],
 });
 
 export const customConfig = {

@@ -10,29 +10,33 @@ export const SignUp: React.FC = () => {
     const [firstName, setFirstName] = React.useState('');
     const [lastName, setLastName] = React.useState('');
     const [showSignup, setShowSignup] = React.useState(false);
+    const [secret, setSecret] = React.useState(process.env.PAYLOAD_SECRET);
 
     const signUp = async () => {
+        const resp = await fetch(`http://localhost:3002/api/signup`, {
+            method: 'POST',
+            // body: JSON.stringify({
+            //     email: email,
+            //     password,
+            //     firstName,
+            //     lastName,
+            // }),
+            body: JSON.stringify({
+                test: 'test',
+            }),
+        });
+
         if (password === confirmPassword) {
             console.log('Passwords match');
-            const query: GraphQLBody = {
-                query: SignUpQuery,
-                variables: {
-                    email,
+
+            const resp = await fetch(`http://localhost:3002/api/signup`, {
+                method: 'POST',
+                body: JSON.stringify({
+                    email: email,
                     password,
                     firstName,
                     lastName,
-                },
-            };
-
-            //TODO: Make helper function for this
-            const resp = await fetch(`http://localhost:3002/api/graphql`, {
-                method: 'POST',
-                headers: {
-                    //TODO: Allow bearer with auth token to make API calls for all instances. Add to standard isAdminOrSelf auth
-                    // Authorization: `Bearer ${CMS_API_KEY}`,
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(query),
+                }),
             });
 
             console.log(`%c[SignUp.tsx] resp :>> ${JSON.stringify(resp, null, 2)}`, 'color:green');
@@ -56,6 +60,7 @@ export const SignUp: React.FC = () => {
                     <h2 style={{ marginTop: '50px' }}>Sign Up</h2>
                     <form
                         onSubmit={async (e) => {
+                            e.preventDefault();
                             await signUp();
                         }}
                     >

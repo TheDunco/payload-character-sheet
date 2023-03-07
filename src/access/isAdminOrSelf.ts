@@ -1,10 +1,11 @@
-import { Access } from "payload/config";
+import { Access } from 'payload/config';
+import { hasBearerAuthHeader } from './hasBearerAuthHeader';
 
-export const isAdminOrSelf: Access = ({ req: { user } }) => {
+export const isAdminOrSelf: Access = ({ req: { user, headers } }) => {
     // Need to be logged in
     if (user) {
         // If user has role of 'admin'
-        if (user.roles?.includes("admin")) {
+        if (user.roles?.includes('admin')) {
             return true;
         }
 

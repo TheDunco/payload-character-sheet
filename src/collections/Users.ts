@@ -1,4 +1,5 @@
 import { CollectionConfig } from 'payload/types';
+import { hasBearerAuthHeader } from '../access/hasBearerAuthHeader';
 import { isAdmin, isAdminFieldLevel } from '../access/isAdmin';
 import { isAdminOrSelf } from '../access/isAdminOrSelf';
 
@@ -16,7 +17,7 @@ const Users: CollectionConfig = {
     },
     access: {
         // Only admins can create users
-        create: isAdmin,
+        create: hasBearerAuthHeader || isAdmin,
         // Admins can read all, but any other logged in user can only read themselves
         read: isAdminOrSelf,
         // Admins can update all, but any other logged in user can only update themselves

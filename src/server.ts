@@ -3,7 +3,14 @@ import payload from 'payload';
 import path from 'path';
 
 require('dotenv').config();
+const bodyParser = require('body-parser');
+const cors = require('cors');
+
+// create express app
 const app = express();
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cors());
 
 // Redirect root to Admin panel
 app.get('/', (_, res) => {
@@ -30,6 +37,33 @@ const start = async () => {
     });
 
     // Add your own express routes here
+
+    // Create an express api endpoint to be able to sign up the user
+    app.post('/api/signup', async (req, res) => {
+        console.log(`%c[server.ts] req.body :>> ${req.body}`, 'color:red', req.body);
+        // Body always equals {}
+
+        const { email, password, firstName, lastName } = req.body;
+
+        if (!email || !password || !firstName || !lastName) {
+            return res.status(400).json({ success: false, message: 'Missing email/password/first/last name' });
+        }
+
+        const auth = req.headers['bearer'] === process.env.PAYLOAD_SECRET;
+
+        if (auth) {
+            payload.create({
+                collection: 'users',
+                data: {
+                    email,
+                    password,
+                    firstName,
+                    lastName,
+                },
+            });
+        }
+        return res.status(401).json({ success: false });
+    });
 
     app.listen(process.env.PORT || 3002);
 };
