@@ -9,7 +9,8 @@ import { Logo } from './components/Logo';
 import { Dashboard } from './components/Dashboard';
 import { KidsOnBroomsCharacter } from './collections/KidsOnBroomsCharacter';
 import { SignUp } from './components/SignUp';
-import { SignInHeader } from './components/SignInHeader';
+import { SignInUpHeader } from './components/SignInHeader';
+import { SignUpLinkButton } from './components/SignUpLinkButton';
 
 export default buildConfig({
     // serverURL: process.env.BASE_URL || 'http://localhost:3002',
@@ -32,8 +33,14 @@ export default buildConfig({
                 Logo: Logo,
                 Icon: Logo,
             },
-            beforeLogin: [SignInHeader],
-            afterLogin: [SignUp],
+            beforeLogin: [SignInUpHeader],
+            afterLogin: [SignUpLinkButton],
+            routes: [
+                {
+                    path: '/signup',
+                    Component: SignUp,
+                },
+            ],
         },
     },
     collections: [FifthEditionCharacter, KidsOnBroomsCharacter, Campaigns, Notes, Media, Users],

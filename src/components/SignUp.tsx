@@ -1,7 +1,6 @@
-import { json } from 'express';
 import React from 'react';
-import { SignUpQuery } from '../utils/graphql/queries/sign-up';
-import { GraphQLBody } from '../utils/graphql/types/graphql-body';
+import { Logo } from './Logo';
+import { SignInUpHeader } from './SignInHeader';
 
 export const SignUp: React.FC = () => {
     const [email, setEmail] = React.useState('');
@@ -9,28 +8,15 @@ export const SignUp: React.FC = () => {
     const [confirmPassword, setConfirmPassword] = React.useState('');
     const [firstName, setFirstName] = React.useState('');
     const [lastName, setLastName] = React.useState('');
-    const [showSignup, setShowSignup] = React.useState(false);
-    const [secret, setSecret] = React.useState(process.env.PAYLOAD_SECRET);
 
-    const signUp = async () => {
-        const resp = await fetch(`http://localhost:3002/api/signup`, {
-            method: 'POST',
-            // body: JSON.stringify({
-            //     email: email,
-            //     password,
-            //     firstName,
-            //     lastName,
-            // }),
-            body: JSON.stringify({
-                test: 'test',
-            }),
-        });
-
+    const signUp = async (): Promise<boolean> => {
+        console.log(process.env.NODE_ENV);
         if (password === confirmPassword) {
-            console.log('Passwords match');
-
             const resp = await fetch(`http://localhost:3002/api/signup`, {
                 method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
                 body: JSON.stringify({
                     email: email,
                     password,
@@ -39,32 +25,34 @@ export const SignUp: React.FC = () => {
                 }),
             });
 
-            console.log(`%c[SignUp.tsx] resp :>> ${JSON.stringify(resp, null, 2)}`, 'color:green');
+            if (resp.status === 200) {
+                return true;
+            }
+
+            return false;
         }
+
+        return false;
     };
 
     return (
         <>
-            {!showSignup && (
-                <div className="form-submit">
-                    <button
-                        onClick={() => setShowSignup(!showSignup)}
-                        className="btn btn--style-secondary btn--icon-style-without-border btn--size-medium btn--icon-position-right"
-                    >
-                        Need to Sign Up?
-                    </button>
-                </div>
-            )}
-            {showSignup && (
-                <div>
-                    <h2 style={{ marginTop: '50px' }}>Sign Up</h2>
+            <section className="login template-minimal template-minimal--width-normal">
+                <div className="template-minimal__wrap">
+                    <div className="login__brand">
+                        <Logo></Logo>
+                    </div>
+                    <SignInUpHeader signUp={true}></SignInUpHeader>
                     <form
                         onSubmit={async (e) => {
-                            e.preventDefault();
-                            await signUp();
+                            const success = await signUp();
+                            if (!success) {
+                                alert('Something went wrong');
+                                e.preventDefault();
+                            }
                         }}
                     >
-                        <div className="field-type password">
+                        <div className="field-type email">
                             <label className="field-label" htmlFor="firstName">
                                 First Name
                                 <span className="required">*</span>
@@ -73,12 +61,12 @@ export const SignUp: React.FC = () => {
                                 onChange={(e) => setFirstName(e.target.value)}
                                 required
                                 value={firstName}
-                                id="firsName"
+                                id="firstName"
                                 type="text"
                             />
                         </div>
 
-                        <div className="field-type password">
+                        <div className="field-type email">
                             <label className="field-label" htmlFor="lastName">
                                 Last Name
                                 <span className="required">*</span>
@@ -93,7 +81,7 @@ export const SignUp: React.FC = () => {
                         </div>
 
                         <div className="field-type email">
-                            <label className="field-label" htmlFor="email">
+                            <label className="field-label" htmlFor="signupEmail">
                                 Email
                                 <span className="required">*</span>
                             </label>
@@ -101,7 +89,7 @@ export const SignUp: React.FC = () => {
                                 onChange={(e) => setEmail(e.target.value)}
                                 required
                                 value={email}
-                                id="email"
+                                id="signupEmail"
                                 type="text"
                             />
                         </div>
@@ -143,7 +131,7 @@ export const SignUp: React.FC = () => {
                         </div>
                     </form>
                 </div>
-            )}
+            </section>
         </>
     );
 };

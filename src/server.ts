@@ -40,28 +40,26 @@ const start = async () => {
 
     // Create an express api endpoint to be able to sign up the user
     app.post('/api/signup', async (req, res) => {
-        console.log(`%c[server.ts] req.body :>> ${req.body}`, 'color:red', req.body);
-        // Body always equals {}
-
         const { email, password, firstName, lastName } = req.body;
 
         if (!email || !password || !firstName || !lastName) {
             return res.status(400).json({ success: false, message: 'Missing email/password/first/last name' });
         }
 
-        const auth = req.headers['bearer'] === process.env.PAYLOAD_SECRET;
+        const newUser = await payload.create({
+            collection: 'users',
+            data: {
+                email,
+                password,
+                firstName,
+                lastName,
+            },
+        });
 
-        if (auth) {
-            payload.create({
-                collection: 'users',
-                data: {
-                    email,
-                    password,
-                    firstName,
-                    lastName,
-                },
-            });
+        if (newUser.id) {
+            return res.status(200).json({ success: true, message: 'User created' });
         }
+
         return res.status(401).json({ success: false });
     });
 
