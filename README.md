@@ -26,6 +26,9 @@ In no particular order...
 - [ ] (5e) Add system for keeping track of things you have advantage/disadvantage on
 - [ ] (5e) Add personality traits, ideals, bonds, flaws to character description
 - [ ] Convert to turporepo monorepo
+- [ ] Figure out a way to do modular things in the FE
+- [ ] Design FE in Figma
+- [ ] Add Quests: NSD
 
 ## How to Use
 
