@@ -15,7 +15,7 @@ I plan to use Svelte to build the 5e character sheet, and potentially the Kids o
 
 In no particular order...
 - [ ] Add Advanced 5e Character sheet support
-- [ ] Figure out sign up
+- [x] Figure out sign up
 - [ ] Work on more granular and fine tuned access control
 - [ ] Develop 5e frontend
 - [ ] Develop KoB frontend
@@ -25,6 +25,7 @@ In no particular order...
 - [ ] Add status effects/active effects
 - [ ] (5e) Add system for keeping track of things you have advantage/disadvantage on
 - [ ] (5e) Add personality traits, ideals, bonds, flaws to character description
+- [ ] Convert to turporepo monorepo
 
 ## How to Use
 
