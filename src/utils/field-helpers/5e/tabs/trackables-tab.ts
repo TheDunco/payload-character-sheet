@@ -1,5 +1,6 @@
 import { Tab } from 'payload/dist/fields/config/types';
 import { option } from '../../../option';
+import { getNSDFields } from '../field-helpers/get-nsd-fields';
 
 export const trackablesTab: Tab = {
     label: 'Trackables',
@@ -8,33 +9,32 @@ export const trackablesTab: Tab = {
             type: 'array',
             name: 'trackables',
             fields: [
+                ...getNSDFields(),
+
                 {
-                    type: 'text',
-                    name: 'trackableName',
+                    type: 'number',
+                    name: 'maximum',
                 },
 
                 {
                     type: 'number',
-                    name: 'trackableMaximum',
-                    label: 'Maximum',
-                },
-
-                {
-                    type: 'number',
-                    name: 'trackableCurrent',
-                    label: 'Current',
+                    name: 'current',
                 },
 
                 {
                     type: 'select',
-                    name: 'trackableType',
-                    label: 'Type',
+                    name: 'type',
                     options: [option('Checkboxes'), option('Number')],
                 },
 
                 {
-                    type: 'textarea',
-                    name: 'trackableDescription',
+                    type: 'checkbox',
+                    name: 'resetsOnShortRest',
+                },
+
+                {
+                    type: 'checkbox',
+                    name: 'resetsOnLongRest',
                 },
             ],
         },

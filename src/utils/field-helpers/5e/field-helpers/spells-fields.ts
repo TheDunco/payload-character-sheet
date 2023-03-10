@@ -1,5 +1,6 @@
 import { Field } from 'payload/types';
 import { option } from '../../../option';
+import { getNSDFields } from './get-nsd-fields';
 
 export const spellsFields: Field[] = [
     {
@@ -35,6 +36,7 @@ export const spellsFields: Field[] = [
                             {
                                 type: 'number',
                                 name: 'currentSpellSlots',
+                                min: 0,
                             },
 
                             {
@@ -56,9 +58,18 @@ export const spellsFields: Field[] = [
                         type: 'array',
                         name: 'spells',
                         fields: [
+                            ...getNSDFields(),
+
                             {
-                                type: 'text',
-                                name: 'name',
+                                type: 'number',
+                                name: 'level',
+                                min: 0,
+                                max: 12, // 10th-12th level slots to support homebrew
+                            },
+
+                            {
+                                type: 'checkbox',
+                                name: 'prepared',
                             },
 
                             {
@@ -76,38 +87,6 @@ export const spellsFields: Field[] = [
                                     option('Dunamancy'),
                                     option('Other'),
                                 ],
-                            },
-
-                            {
-                                type: 'richText',
-                                name: 'description',
-                            },
-
-                            {
-                                type: 'text',
-                                name: 'castingTime',
-                            },
-
-                            {
-                                type: 'text',
-                                name: 'range',
-                            },
-
-                            {
-                                type: 'text',
-                                name: 'components',
-                            },
-
-                            {
-                                type: 'text',
-                                name: 'duration',
-                            },
-
-                            {
-                                type: 'number',
-                                name: 'level',
-                                min: 0,
-                                max: 9,
                             },
                         ],
                     },

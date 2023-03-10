@@ -55,6 +55,16 @@ export const equipmentTab: Tab = {
                 },
 
                 {
+                    type: 'text',
+                    name: 'summary',
+                },
+
+                {
+                    type: 'richText',
+                    name: 'description',
+                },
+
+                {
                     type: 'number',
                     name: 'quantity',
                 },
@@ -72,6 +82,12 @@ export const equipmentTab: Tab = {
                 {
                     type: 'number',
                     name: 'weight',
+                },
+
+                {
+                    type: 'number',
+                    name: 'value',
+                    label: 'Value (in gold)',
                 },
             ],
         },

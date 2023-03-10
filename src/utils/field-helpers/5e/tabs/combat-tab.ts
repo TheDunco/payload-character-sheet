@@ -1,4 +1,5 @@
 import { Tab } from 'payload/dist/fields/config/types';
+import { abilitiesFields } from '../field-helpers/abilities-fields';
 import { actionsFields } from '../field-helpers/actions-fields';
 import { defensesFields } from '../field-helpers/defenses-fields';
 import { featFields } from '../field-helpers/feat-fields';
@@ -15,6 +16,7 @@ export const combatTab: Tab = {
         ...spellsFields,
         ...actionsFields,
         ...defensesFields,
+        ...abilitiesFields,
         ...featFields,
     ],
 };

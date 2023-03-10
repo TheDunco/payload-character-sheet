@@ -1,6 +1,7 @@
 import React from 'react';
 import { Logo } from './Logo';
-import { SignInUpHeader } from './SignInHeader';
+import { SignInUpHeader } from './SignInUpHeader';
+import { SignInUpLinkButton } from './SignInUpLinkButton';
 
 export const SignUp: React.FC = () => {
     const [email, setEmail] = React.useState('');
@@ -42,7 +43,7 @@ export const SignUp: React.FC = () => {
                     <div className="login__brand">
                         <Logo></Logo>
                     </div>
-                    <SignInUpHeader signUp={true}></SignInUpHeader>
+                    <SignInUpHeader signIn={false}></SignInUpHeader>
                     <form
                         onSubmit={async (e) => {
                             const success = await signUp();
@@ -130,6 +131,7 @@ export const SignUp: React.FC = () => {
                             </button>
                         </div>
                     </form>
+                    <SignInUpLinkButton signIn={false} />
                 </div>
             </section>
         </>

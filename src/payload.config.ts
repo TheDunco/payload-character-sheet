@@ -9,8 +9,8 @@ import { Logo } from './components/Logo';
 import { Dashboard } from './components/Dashboard';
 import { KidsOnBroomsCharacter } from './collections/KidsOnBroomsCharacter';
 import { SignUp } from './components/SignUp';
-import { SignInUpHeader } from './components/SignInHeader';
-import { SignUpLinkButton } from './components/SignUpLinkButton';
+import { SignInUpHeader } from './components/SignInUpHeader';
+import { SignInUpLinkButton } from './components/SignInUpLinkButton';
 
 export default buildConfig({
     // serverURL: process.env.BASE_URL || 'http://localhost:3002',
@@ -34,7 +34,7 @@ export default buildConfig({
                 Icon: Logo,
             },
             beforeLogin: [SignInUpHeader],
-            afterLogin: [SignUpLinkButton],
+            afterLogin: [SignInUpLinkButton],
             routes: [
                 {
                     path: '/signup',

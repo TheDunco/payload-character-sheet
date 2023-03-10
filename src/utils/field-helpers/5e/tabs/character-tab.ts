@@ -42,6 +42,11 @@ export const characterTab: Tab = {
 
                 {
                     type: 'number',
+                    name: 'initiative',
+                },
+
+                {
+                    type: 'number',
                     name: 'speed',
                 },
             ],

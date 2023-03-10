@@ -1,4 +1,5 @@
 import { Field } from 'payload/types';
+import { getNSDFields } from './get-nsd-fields';
 
 const skill = (name: string, label?: string): Field[] => [
     {
@@ -9,10 +10,29 @@ const skill = (name: string, label?: string): Field[] => [
                 type: 'group',
                 name: name.slice(0, 1).toLowerCase() + name.slice(1),
                 fields: [
+                    ...getNSDFields(name),
+
+                    //TODO: Validate that only one of these is checked
                     {
-                        name: 'proficient',
-                        type: 'checkbox',
+                        type: 'row',
+                        fields: [
+                            {
+                                type: 'checkbox',
+                                name: 'halfProficient',
+                            },
+
+                            {
+                                name: 'proficient',
+                                type: 'checkbox',
+                            },
+
+                            {
+                                type: 'checkbox',
+                                name: 'expertise',
+                            },
+                        ],
                     },
+
                     {
                         name: 'bonus',
                         type: 'number',
@@ -20,6 +40,22 @@ const skill = (name: string, label?: string): Field[] => [
                         admin: {
                             width: '30%',
                         },
+                    },
+
+                    //TODO: Validate that only one of these is checked
+                    {
+                        type: 'row',
+                        fields: [
+                            {
+                                type: 'checkbox',
+                                name: 'advantage',
+                            },
+
+                            {
+                                type: 'checkbox',
+                                name: 'disadvantage',
+                            },
+                        ],
                     },
                 ],
             },

@@ -3,16 +3,14 @@ import { option } from '../../../option';
 import { abilityScoreOptions } from '../options-helpers/ability-score-options';
 import { diceOptions } from '../../diceTypes';
 import { damageTypeOptions } from '../options-helpers/damage-type-options';
+import { getNSDFields } from './get-nsd-fields';
 
 export const actionsFields: Field[] = [
     {
         type: 'array',
         name: 'actions',
         fields: [
-            {
-                type: 'text',
-                name: 'name',
-            },
+            ...getNSDFields(),
 
             {
                 type: 'select',
@@ -108,16 +106,6 @@ export const actionsFields: Field[] = [
                         name: 'damageBonus',
                     },
                 ],
-            },
-
-            {
-                type: 'text',
-                name: 'summary',
-            },
-
-            {
-                type: 'textarea',
-                name: 'description',
             },
         ],
     },
