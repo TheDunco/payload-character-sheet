@@ -9,7 +9,7 @@ This project is meant to use Payload CMS to provide a database (using Mongo), AP
 I wanted to be able to support any and many frontends for different types of character sheets and campaigns and such, so this is meant to build one unified API for all of them.
 This way, I or anywone can use the API to build a frontend in whatever manner they like!
 
-I plan to use Svelte to build the 5e character sheet, and potentially the Kids on Brooms character sheet in the future.
+I plan to use Svelte to build the 5e character sheet, and potentially the Kids on Brooms character sheet and One D&D sheet in the future.
 
 # Things to Do
 
@@ -27,8 +27,15 @@ In no particular order...
 - [ ] (5e) Add personality traits, ideals, bonds, flaws to character description
 - [ ] Convert to turporepo monorepo
 - [ ] Figure out a way to do modular things in the FE
-- [ ] Design FE in Figma
+- [X] Design FE in Figma
 - [ ] Add Quests: NSD
+
+## Design Prototype
+
+
+https://user-images.githubusercontent.com/44826828/225926588-bac7220d-1802-4d76-85fc-9f9488717e45.mov
+
+
 
 ## How to Use
 
