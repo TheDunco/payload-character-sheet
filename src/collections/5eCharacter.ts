@@ -1,4 +1,5 @@
 import { CollectionConfig } from 'payload/types';
+import { hasBearerAuthHeader } from '../access/hasBearerAuthHeader';
 import { isAdminOrSelf } from '../access/isAdminOrSelf';
 import { abilityScoresAndSkillsTab } from '../utils/field-helpers/5e/tabs/ability-scores-and-skills-tab';
 import { characterTab } from '../utils/field-helpers/5e/tabs/character-tab';
@@ -21,7 +22,7 @@ export const FifthEditionCharacter: CollectionConfig = {
     },
 
     access: {
-        read: isAdminOrSelf,
+        read: hasBearerAuthHeader || isAdminOrSelf,
         create: isAdminOrSelf,
         update: isAdminOrSelf,
         delete: isAdminOrSelf,
