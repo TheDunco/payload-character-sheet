@@ -1,7 +1,8 @@
 import { Access } from 'payload/config';
 import { hasBearerAuthHeader } from './hasBearerAuthHeader';
 
-export const isAdminOrSelf: Access = ({ req: { user, headers } }) => {
+export const isAdminOrSelf: Access = ({ req }) => {
+    const { user } = req;
     // Need to be logged in
     if (user) {
         // If user has role of 'admin'
@@ -15,6 +16,10 @@ export const isAdminOrSelf: Access = ({ req: { user, headers } }) => {
                 equals: user.id,
             },
         };
+    }
+
+    if (hasBearerAuthHeader({ req })) {
+        return true;
     }
 
     // Reject everyone else

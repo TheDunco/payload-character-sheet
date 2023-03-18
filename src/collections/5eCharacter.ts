@@ -22,7 +22,7 @@ export const FifthEditionCharacter: CollectionConfig = {
     },
 
     access: {
-        read: hasBearerAuthHeader || isAdminOrSelf,
+        read: isAdminOrSelf,
         create: isAdminOrSelf,
         update: isAdminOrSelf,
         delete: isAdminOrSelf,
