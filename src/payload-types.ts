@@ -25,8 +25,13 @@ export interface FifthEditionCharacter {
     xp?: number;
     proficiencyBonus?: number;
     armorClass?: number;
+    initiative?: number;
     speed?: number;
+    flySpeed?: number;
+    swimSpeed?: number;
     inspiration?: boolean;
+    race?: string;
+    pronouns?: string;
     classes: {
       class?:
         | 'artificer'
@@ -169,87 +174,264 @@ export interface FifthEditionCharacter {
   };
   AbilityScoresAndSkills: {
     abilityScores: {
-      intelligence?: number;
-      wisdom?: number;
-      charisma?: number;
-      dexterity?: number;
-      strength?: number;
-      constitution?: number;
+      intelligence: {
+        intelligenceScore?: number;
+        intelligenceModifier?: number;
+        intelligenceSavingThrowProficiency?: boolean;
+      };
+      wisdom: {
+        wisdomScore?: number;
+        wisdomModifier?: number;
+        wisdomSavingThrowProficiency?: boolean;
+      };
+      charisma: {
+        charismaScore?: number;
+        charismaModifier?: number;
+        charismaSavingThrowProficiency?: boolean;
+      };
+      strength: {
+        strengthScore?: number;
+        strengthModifier?: number;
+        strengthSavingThrowProficiency?: boolean;
+      };
+      dexterity: {
+        dexterityScore?: number;
+        dexterityModifier?: number;
+        dexteritySavingThrowProficiency?: boolean;
+      };
+      constitution: {
+        constitutionScore?: number;
+        constitutionModifier?: number;
+        constitutionSavingThrowProficiency?: boolean;
+      };
     };
     intelligenceSkills: {
       arcana: {
+        ArcanaName?: string;
+        ArcanaSummary?: string;
+        ArcanaDescription?: {
+          [k: string]: unknown;
+        }[];
+        halfProficient?: boolean;
         proficient?: boolean;
+        expertise?: boolean;
         bonus?: number;
+        advantage?: boolean;
+        disadvantage?: boolean;
       };
       history: {
+        HistoryName?: string;
+        HistorySummary?: string;
+        HistoryDescription?: {
+          [k: string]: unknown;
+        }[];
+        halfProficient?: boolean;
         proficient?: boolean;
+        expertise?: boolean;
         bonus?: number;
+        advantage?: boolean;
+        disadvantage?: boolean;
       };
       investigation: {
+        InvestigationName?: string;
+        InvestigationSummary?: string;
+        InvestigationDescription?: {
+          [k: string]: unknown;
+        }[];
+        halfProficient?: boolean;
         proficient?: boolean;
+        expertise?: boolean;
         bonus?: number;
+        advantage?: boolean;
+        disadvantage?: boolean;
       };
       nature: {
+        NatureName?: string;
+        NatureSummary?: string;
+        NatureDescription?: {
+          [k: string]: unknown;
+        }[];
+        halfProficient?: boolean;
         proficient?: boolean;
+        expertise?: boolean;
         bonus?: number;
+        advantage?: boolean;
+        disadvantage?: boolean;
       };
       religion: {
+        ReligionName?: string;
+        ReligionSummary?: string;
+        ReligionDescription?: {
+          [k: string]: unknown;
+        }[];
+        halfProficient?: boolean;
         proficient?: boolean;
+        expertise?: boolean;
         bonus?: number;
+        advantage?: boolean;
+        disadvantage?: boolean;
       };
     };
     wisdomSkills: {
       animalHandling: {
+        AnimalHandlingName?: string;
+        AnimalHandlingSummary?: string;
+        AnimalHandlingDescription?: {
+          [k: string]: unknown;
+        }[];
+        halfProficient?: boolean;
         proficient?: boolean;
+        expertise?: boolean;
         bonus?: number;
+        advantage?: boolean;
+        disadvantage?: boolean;
       };
       insight: {
+        InsightName?: string;
+        InsightSummary?: string;
+        InsightDescription?: {
+          [k: string]: unknown;
+        }[];
+        halfProficient?: boolean;
         proficient?: boolean;
+        expertise?: boolean;
         bonus?: number;
+        advantage?: boolean;
+        disadvantage?: boolean;
       };
       medicine: {
+        MedicineName?: string;
+        MedicineSummary?: string;
+        MedicineDescription?: {
+          [k: string]: unknown;
+        }[];
+        halfProficient?: boolean;
         proficient?: boolean;
+        expertise?: boolean;
         bonus?: number;
+        advantage?: boolean;
+        disadvantage?: boolean;
       };
       perception: {
+        PerceptionName?: string;
+        PerceptionSummary?: string;
+        PerceptionDescription?: {
+          [k: string]: unknown;
+        }[];
+        halfProficient?: boolean;
         proficient?: boolean;
+        expertise?: boolean;
         bonus?: number;
+        advantage?: boolean;
+        disadvantage?: boolean;
       };
       survival: {
+        SurvivalName?: string;
+        SurvivalSummary?: string;
+        SurvivalDescription?: {
+          [k: string]: unknown;
+        }[];
+        halfProficient?: boolean;
         proficient?: boolean;
+        expertise?: boolean;
         bonus?: number;
+        advantage?: boolean;
+        disadvantage?: boolean;
       };
     };
     charismaSkills: {
       deception: {
+        DeceptionName?: string;
+        DeceptionSummary?: string;
+        DeceptionDescription?: {
+          [k: string]: unknown;
+        }[];
+        halfProficient?: boolean;
         proficient?: boolean;
+        expertise?: boolean;
         bonus?: number;
+        advantage?: boolean;
+        disadvantage?: boolean;
       };
       intimidation: {
+        IntimidationName?: string;
+        IntimidationSummary?: string;
+        IntimidationDescription?: {
+          [k: string]: unknown;
+        }[];
+        halfProficient?: boolean;
         proficient?: boolean;
+        expertise?: boolean;
         bonus?: number;
+        advantage?: boolean;
+        disadvantage?: boolean;
       };
       performance: {
+        PerformanceName?: string;
+        PerformanceSummary?: string;
+        PerformanceDescription?: {
+          [k: string]: unknown;
+        }[];
+        halfProficient?: boolean;
         proficient?: boolean;
+        expertise?: boolean;
         bonus?: number;
+        advantage?: boolean;
+        disadvantage?: boolean;
       };
       persuasion: {
+        PersuasionName?: string;
+        PersuasionSummary?: string;
+        PersuasionDescription?: {
+          [k: string]: unknown;
+        }[];
+        halfProficient?: boolean;
         proficient?: boolean;
+        expertise?: boolean;
         bonus?: number;
+        advantage?: boolean;
+        disadvantage?: boolean;
       };
     };
     dexteritySkills: {
       acrobatics: {
+        AcrobaticsName?: string;
+        AcrobaticsSummary?: string;
+        AcrobaticsDescription?: {
+          [k: string]: unknown;
+        }[];
+        halfProficient?: boolean;
         proficient?: boolean;
+        expertise?: boolean;
         bonus?: number;
+        advantage?: boolean;
+        disadvantage?: boolean;
       };
       sleightOfHand: {
+        SleightOfHandName?: string;
+        SleightOfHandSummary?: string;
+        SleightOfHandDescription?: {
+          [k: string]: unknown;
+        }[];
+        halfProficient?: boolean;
         proficient?: boolean;
+        expertise?: boolean;
         bonus?: number;
+        advantage?: boolean;
+        disadvantage?: boolean;
       };
       stealth: {
+        StealthName?: string;
+        StealthSummary?: string;
+        StealthDescription?: {
+          [k: string]: unknown;
+        }[];
+        halfProficient?: boolean;
         proficient?: boolean;
+        expertise?: boolean;
         bonus?: number;
+        advantage?: boolean;
+        disadvantage?: boolean;
       };
     };
   };
@@ -282,6 +464,12 @@ export interface FifthEditionCharacter {
     }[];
     spells: {
       name?: string;
+      summary?: string;
+      description?: {
+        [k: string]: unknown;
+      }[];
+      level?: number;
+      prepared?: boolean;
       school?:
         | 'abjuration'
         | 'conjuration'
@@ -293,14 +481,46 @@ export interface FifthEditionCharacter {
         | 'transmutation'
         | 'dunamancy'
         | 'other';
+      id?: string;
+    }[];
+    actions: {
+      name?: string;
+      summary?: string;
       description?: {
         [k: string]: unknown;
       }[];
-      castingTime?: string;
+      type?: 'melee' | 'ranged' | 'spell' | 'power' | 'special' | 'potion' | 'magic-item' | 'other';
       range?: string;
-      components?: string;
-      duration?: string;
-      level?: number;
+      proficient?: boolean;
+      attack: {
+        abilityScore?: 'intelligence' | 'wisdom' | 'charisma' | 'dexterity' | 'strength' | 'constitution';
+        miscModifier?: number;
+        magicModifier?: number;
+        attackBonus?: number;
+      };
+      damage: {
+        diceCount?: number;
+        diceType?: 'd4' | 'd6' | 'd8' | 'd10' | 'd12' | 'd20';
+        damageAbilityScore?: 'intelligence' | 'wisdom' | 'charisma' | 'dexterity' | 'strength' | 'constitution';
+        damageType?:
+          | 'acid'
+          | 'bludgeoning'
+          | 'cold'
+          | 'fire'
+          | 'force'
+          | 'lightning'
+          | 'necrotic'
+          | 'piercing'
+          | 'poison'
+          | 'psychic'
+          | 'radiant'
+          | 'slashing'
+          | 'thunder'
+          | 'other';
+        damageMiscModifier?: number;
+        damageMagicModifier?: number;
+        damageBonus?: number;
+      };
       id?: string;
     }[];
     defenses: {
@@ -311,6 +531,103 @@ export interface FifthEditionCharacter {
       magicalBonus?: number;
       id?: string;
     }[];
+    abilities: {
+      name?: string;
+      summary?: string;
+      description?: {
+        [k: string]: unknown;
+      }[];
+      id?: string;
+    }[];
+    feats: {
+      featName?: string;
+      featSummary?: string;
+      featDescription?: string;
+      id?: string;
+    }[];
+  };
+  money: {
+    platinum?: number;
+    gold?: number;
+    silver?: number;
+    copper?: number;
+  };
+  equipment: {
+    name?: string;
+    summary?: string;
+    description?: {
+      [k: string]: unknown;
+    }[];
+    quantity?: number;
+    equipped?: boolean;
+    carried?: boolean;
+    weight?: number;
+    value?: number;
+    id?: string;
+  }[];
+  statusEffects: {
+    statusEffect?:
+      | 'blinded'
+      | 'charmed'
+      | 'deafened'
+      | 'exhaustion'
+      | 'frightened'
+      | 'grappled'
+      | 'incapacitated'
+      | 'invisible'
+      | 'paralyzed'
+      | 'petrified'
+      | 'poisoned'
+      | 'prone'
+      | 'restrained'
+      | 'stunned'
+      | 'unconscious'
+      | 'dead'
+      | 'other';
+    id?: string;
+  }[];
+  trackables: {
+    name?: string;
+    summary?: string;
+    description?: {
+      [k: string]: unknown;
+    }[];
+    maximum?: number;
+    current?: number;
+    type?: 'checkboxes' | 'number';
+    resetsOnShortRest?: boolean;
+    resetsOnLongRest?: boolean;
+    id?: string;
+  }[];
+  quests: {
+    questName?: string;
+    questSummary?: string;
+    questDescription?: {
+      [k: string]: unknown;
+    }[];
+  };
+  npcs: {
+    npcName?: string;
+    npcSummary?: string;
+    npcDescription?: {
+      [k: string]: unknown;
+    }[];
+    pictures?: string[] | Media[];
+  };
+  locations: {
+    npcName?: string;
+    npcSummary?: string;
+    npcDescription?: {
+      [k: string]: unknown;
+    }[];
+  };
+  companionsAndMounts: {
+    npcName?: string;
+    npcSummary?: string;
+    npcDescription?: {
+      [k: string]: unknown;
+    }[];
+    pictures?: string[] | Media[];
   };
   notes?: string[] | Note[];
   createdAt: string;
@@ -370,7 +687,27 @@ export interface Campaign {
   id: string;
   name: string;
   players?: string[] | User[];
-  characters?: string[] | FifthEditionCharacter[];
+  characters?:
+    | (
+        | {
+            value: string;
+            relationTo: 'fifth-edition-character';
+          }
+        | {
+            value: string;
+            relationTo: 'kids-on-brooms-character';
+          }
+      )[]
+    | (
+        | {
+            value: FifthEditionCharacter;
+            relationTo: 'fifth-edition-character';
+          }
+        | {
+            value: KidsOnBroomsCharacter;
+            relationTo: 'kids-on-brooms-character';
+          }
+      )[];
   media?: string[] | Media[];
   notes?: string[] | Note[];
   createdAt: string;
@@ -436,7 +773,7 @@ export interface KidsOnBroomsCharacter {
     };
   };
   character: {
-    name?: string;
+    Trope?: string;
     age?: number;
     pronouns?: string;
     fear?: string;

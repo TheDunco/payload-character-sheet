@@ -49,12 +49,32 @@ export const characterTab: Tab = {
                     type: 'number',
                     name: 'speed',
                 },
+
+                {
+                    type: 'number',
+                    name: 'flySpeed',
+                },
+
+                {
+                    type: 'number',
+                    name: 'swimSpeed',
+                },
             ],
         },
 
         {
             type: 'checkbox',
             name: 'inspiration',
+        },
+
+        {
+            type: 'text',
+            name: 'race',
+        },
+
+        {
+            type: 'text',
+            name: 'pronouns',
         },
 
         {
